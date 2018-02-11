@@ -1,0 +1,48 @@
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+	struct Dianti{
+		int	time;
+		int begin;
+		int end;
+	};
+	struct Dianti stu[5],w;
+	int i,j;
+	for (i=0;i<5;i++)
+	{
+		scanf("%d %d %d",&stu[i].time,&stu[i].begin,&stu[i].end);
+	}
+	for (i=0;i<5;i++)
+	{
+		if (stu[i].begin==0)
+		stu[i].begin=10;
+		if (stu[i].end==0)
+		stu[i].end=10;
+	}
+	for (i=0;i<5;i++)
+	{
+		for(j=0;j<4-i;j++)
+		{
+			if (stu[i].time>stu[i+1].time)
+			{
+				w=stu[i];
+				stu[i]=stu[i+1];
+				stu[i+1]=w;
+			}
+		}
+	}
+	int sumtime=stu[0].time;
+	for (i=0;;)
+	{
+		sumtime+=abs(stu[i].end-stu[i].begin);
+		if (i+1==5)
+		break;
+		else
+		sumtime+=abs(stu[i+1].time-stu[i].time);
+		sumtime+=abs(stu[i].begin-stu[i+1].end);
+		i++;
+	}
+	printf("%d",sumtime);
+	return 0;
+ } 
