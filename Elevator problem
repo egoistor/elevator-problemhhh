@@ -39,6 +39,7 @@ int main()
 		if (i+1==5)
 		break;
 		else
+		printf("%d时，停靠在%d楼",sumtime,stu[i].end);
 		sumtime+=abs(stu[i+1].time-stu[i].time);
 		sumtime+=abs(stu[i].begin-stu[i+1].end);
 		i++;
